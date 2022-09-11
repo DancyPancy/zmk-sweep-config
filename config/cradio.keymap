@@ -15,48 +15,30 @@
 };
 
 / { 
+    behaviors {
+        
+    };
 
     combos {
         compatible = "zmk,combos";
+	
+	base_layer {
+	    timeout-ms = <50>;
+            key-positions = <31 32>;
+            bindings = <&mo 0>;
+	};
+	
+	base_layer {
+	    timeout-ms = <50>;
+            key-positions = <33 34>;
+            bindings = <&mo 0>;
+	};
+	
         combo_esc {
             timeout-ms = <50>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
-        
-         combo_tab {
-            timeout-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp TAB>;
-        };
-        
-            combo_ralt {
-            timeout-ms = <50>;
-            key-positions = <17 16>;
-            bindings = <&kp RALT>;
-        };
-        
-                    combo_lalt {
-            timeout-ms = <50>;
-            key-positions = <11 12>;
-            bindings = <&kp LALT>;
-        };
-        
-                           combo_lgui {
-            timeout-ms = <50>;
-            key-positions = <12 13>;
-            bindings = <&kp LGUI>;
-        };
-        
-        
-           combo_rgui {
-            timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp RGUI>;
-        };
-	
-
-        
     };
 
         keymap {
@@ -67,7 +49,7 @@
 		&kp Q &kp W &kp F &kp P &kp B 						&kp J &kp L  &kp U    &kp Y   &kp SEMI 
 		&kp A &kp R &kp S &kp T &kp G 			        	        &kp M &kp N &kp E &kp I &kp O
 		&mt LSFT Z &kp X &kp C &kp D &kp V				        &kp K &kp H  &kp CMMA &kp DOT &mt RSFT APOS
-          				&kp SPACE &mo 1  				&mo 2 &mo 3 
+          				&to 1 &lt 2 SPACE 				&mo 3 &to 4 
 		>;
 		};
 
