@@ -25,13 +25,13 @@
 	base_layer {
 	    timeout-ms = <50>;
             key-positions = <31 32>;
-            bindings = <&mo 0>;
+            bindings = <&to 0>;
 	};
 	
-	base_layer {
+	base_layer2 {
 	    timeout-ms = <50>;
             key-positions = <33 34>;
-            bindings = <&mo 0>;
+            bindings = <&to 0>;
 	};
 	
         combo_esc {
