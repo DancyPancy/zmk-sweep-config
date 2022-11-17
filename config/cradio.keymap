@@ -33,6 +33,12 @@
             key-positions = <33 34>;
             bindings = <&to 0>;
 		};
+
+		caps_lock {
+			timeout-ms = <50>;
+			key-positions = <21 30>;
+			bindings = <&kp CAPSLOCK>;
+		};
 	
         combo_esc {
             timeout-ms = <50>;
@@ -46,19 +52,19 @@
 			
 		alpha_layer {
 			bindings = <
-				&kp Q &kp W &kp F &kp P &kp B 						&kp J &kp L  &kp U    &kp Y   &kp SEMI 
-				&kp A &kp R &kp S &kp T &kp G 			        	        &kp M &kp N &kp E &kp I &kp O
-				&mt LSFT Z &kp X &kp C &kp D &kp V				        &kp K &kp H  &kp CMMA &kp DOT &mt RSFT APOS
-									&to 1 &lt 2 SPACE 				&mo 3 &to 4 
+				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp SEMI 
+				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
+				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
+									&to 1  &lt 2 SPACE				&mo 3 &to 4 
 			>;
-		};
+		};	
 
-       	left_layer {
+       	num_layer {
 			bindings = <
-				&kp NUM_1  &kp NUMBER_7    &kp NUMBER_8    &kp NUMBER_9    &kp NUM_5		&kp NUM_6 &kp NUM_7 &kp NUM_8 &kp NUM_9 &kp NUM_0 
-				&kp TAB    &kp NUMBER_4    &kp NUMBER_5      &kp NUMBER_6     &kp HASH 		&kp MINUS &kp EQL  &kp LBKT &kp RBKT  &kp DEL 
-				&kp ESC    &kp NUMBER_1 	&kp NUMBER_2 &kp NUMBER_3  &kp TILDE2 	&kp MINUS &kp GRAVE &kp LBKT &kp RBKT  &kp DEL 
-								&mo 1  &kp LGUI  					&kp RGUI &mo 2 
+				&kp MINUS  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp PLUS				&kp NUM_6  &kp NUM_7  &kp NUM_8  &kp NUM_9  &kp NUM_0 
+				&kp ASTRK  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp PRCNT				&kp MINUS  &kp EQL    &kp LBKT   &kp RBKT   &kp DEL 
+				&kp FSLH   &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT				&kp MINUS  &kp GRAVE  &kp LBKT   &kp RBKT   &kp DEL 
+												&kp KP_N0  &kp SPACE				&kp RGUI &mo 2 
 			>;
 		};
 		
@@ -67,7 +73,7 @@
 				&kp BANG  &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
 				&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
 				&kp LSFT  &kp KPLS &kp LBKT &kp RBKT   &kp BSLH    			&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
-							&mo 3 &kp LCTL  				&kp SPC  &mo 2 
+												&kp ENTER &kp LCTL  				&kp SPC  &mo 2 
 			>;
 		};	
 		
