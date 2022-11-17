@@ -16,32 +16,222 @@
 
 / { 
     behaviors {
-		
+
+		astcaret: asterisk_caret {
+			compatible = "zmk,behavior-mod-morph";
+			label = "ASTERISK_CARET";
+			#binding-cells = <0>;
+			bindings = <&kp KP_ASTERISK>, <&kp CARET>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		dotprct: dot_percent {
+			compatible = "zmk,behavior-mod-morph";
+			label = "DOT_PERCENT";
+			#binding-cells = <0>;
+			bindings = <&kp KP_DOT>, <&kp PERCENT>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n1tswap: number_one_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_ONE_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N1>, <&tswap1>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n2tswap: number_two_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_TWO_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N2>, <&tswap2>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n3tswap: number_three_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_THREE_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N3>, <&tswap3>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n4tswap: number_four_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_FOUR_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N4>, <&tswap4>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n5tswap: number_five_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_FIVE_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N5>, <&tswap5>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n6tswap: number_six_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_SIX_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N6>, <&tswap6>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n7tswap: number_seven_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_SEVEN_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N7>, <&tswap7>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n8tswap: number_eight_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_EIGHT_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N8>, <&tswap8>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n9tswap: number_nine_tab_swap {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NUMBER_NINE_TAB_SWAP";
+			#binding-cells = <0>;
+			bindings = <&kp KP_N9>, <&tswap9>;
+			mods = <(MOD_LSFT)>;
+		};
+
+		n0find: num_0_find {
+			compatible = "zmk,behavior-mod-morph";
+            label = "NUMBER_ZERO_FIND";
+            #binding-cells = <0>;
+            bindings = <&kp KP_N0>, <&find0>;
+        };
+
     };
+
+	macros {
+
+        tswap1: tab_swap_1 {
+            label = "TAB_SWAP_ONE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_1)>,
+				<&macro_tap &tog 1>
+                ;
+        };
+
+		tswap2: tab_swap_2 {
+            label = "TAB_SWAP_TWO";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_2)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap3: tab_swap_3 {
+            label = "TAB_SWAP_THREE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_3)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap4: tab_swap_4 {
+            label = "TAB_SWAP_FOUR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_4)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap5: tab_swap_5 {
+            label = "TAB_SWAP_FIVE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_5)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap6: tab_swap_6 {
+            label = "TAB_SWAP_SIX";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_6)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap7: tab_swap_7 {
+            label = "TAB_SWAP_SEVEN";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_7)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap8: tab_swap_8 {
+            label = "TAB_SWAP_EIGHT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_8)>,
+				<&macro_tap &tog 1>;
+        };
+
+		tswap9: tab_swap_9 {
+            label = "TAB_SWAP_NINE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LA(NUMBER_9)>,
+				<&macro_tap &tog 1>;
+        };
+
+		find0: find_0 {
+            label = "FIND_ZERO";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LC(F)>,
+				<&macro_tap &tog 1>;
+        };
+	};
 
     combos {
         compatible = "zmk,combos";
 	
 		base_layer {
-	    	timeout-ms = <50>;
+	    	timeout-ms = <10>;
             key-positions = <31 32>;
             bindings = <&to 0>;
 		};
 	
 		base_layer2 {
-	    	timeout-ms = <50>;
+	    	timeout-ms = <10>;
             key-positions = <33 34>;
             bindings = <&to 0>;
 		};
 
 		caps_lock {
-			timeout-ms = <50>;
+			timeout-ms = <25>;
 			key-positions = <21 30>;
+			layers = <0>;
 			bindings = <&kp CAPSLOCK>;
 		};
 	
         combo_esc {
-            timeout-ms = <50>;
+            timeout-ms = <25>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
@@ -52,28 +242,28 @@
 			
 		alpha_layer {
 			bindings = <
-				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp SEMI 
+				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp BSPC 
 				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
 				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
-									&to 1  &lt 2 SPACE				&mo 3 &to 4 
+									&tog 1  &lt 2 SPACE				&mo 3 &to 4 
 			>;
 		};	
 
        	num_layer {
 			bindings = <
-				&kp MINUS  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp PLUS				&kp NUM_6  &kp NUM_7  &kp NUM_8  &kp NUM_9  &kp NUM_0 
-				&kp ASTRK  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp PRCNT				&kp MINUS  &kp EQL    &kp LBKT   &kp RBKT   &kp DEL 
-				&kp FSLH   &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT				&kp MINUS  &kp GRAVE  &kp LBKT   &kp RBKT   &kp DEL 
-												&kp KP_N0  &kp SPACE				&kp RGUI &mo 2 
+				&kp KP_MINUS   &n7tswap  &n8tswap  &n9tswap  &kp KP_PLUS				&trans  &trans  &trans  &trans  &trans
+				&astcaret      &n4tswap  &n5tswap  &n6tswap  &kp KP_EQUAL				&trans  &trans  &trans  &trans  &trans 
+				&kp KP_DIVIDE  &n1tswap  &n2tswap  &n3tswap  &dotprct					&trans  &trans  &trans  &trans  &trans 
+											&n0find  &mt LSHFT SPACE					&trans  &trans 
 			>;
 		};
 		
 		right_layer {
 			bindings = <
-				&kp BANG  &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
+				&kp ESC   &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
 				&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
 				&kp LSFT  &kp KPLS &kp LBKT &kp RBKT   &kp BSLH    			&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
-												&kp ENTER &kp LCTL  				&kp SPC  &mo 2 
+												&kp ENTER &trans  				&kp SPC  &mo 2 
 			>;
 		};	
 		
