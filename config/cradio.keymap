@@ -17,101 +17,6 @@
 / { 
     behaviors {
 
-		astcaret: asterisk_caret {
-			compatible = "zmk,behavior-mod-morph";
-			label = "ASTERISK_CARET";
-			#binding-cells = <0>;
-			bindings = <&kp KP_ASTERISK>, <&kp CARET>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		dotprct: dot_percent {
-			compatible = "zmk,behavior-mod-morph";
-			label = "DOT_PERCENT";
-			#binding-cells = <0>;
-			bindings = <&kp KP_DOT>, <&kp PERCENT>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n1tswap: number_one_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_ONE_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N1>, <&tswap1>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n2tswap: number_two_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_TWO_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N2>, <&tswap2>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n3tswap: number_three_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_THREE_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N3>, <&tswap3>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n4tswap: number_four_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_FOUR_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N4>, <&tswap4>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n5tswap: number_five_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_FIVE_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N5>, <&tswap5>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n6tswap: number_six_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_SIX_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N6>, <&tswap6>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n7tswap: number_seven_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_SEVEN_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N7>, <&tswap7>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n8tswap: number_eight_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_EIGHT_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N8>, <&tswap8>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n9tswap: number_nine_tab_swap {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NUMBER_NINE_TAB_SWAP";
-			#binding-cells = <0>;
-			bindings = <&kp KP_N9>, <&tswap9>;
-			mods = <(MOD_LSFT)>;
-		};
-
-		n0find: num_0_find {
-			compatible = "zmk,behavior-mod-morph";
-            label = "NUMBER_ZERO_FIND";
-            #binding-cells = <0>;
-            bindings = <&kp KP_N0>, <&find0>;
-        };
-
     };
 
 	macros {
@@ -198,14 +103,32 @@
 				<&macro_tap &tog 1>;
         };
 
-		find0: find_0 {
-            label = "FIND_ZERO";
+		find: find {
+            label = "FIND";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = 
 				<&macro_tap &kp LC(F)>,
 				<&macro_tap &tog 1>;
         };
+
+		winrwork: win_to_right_work {
+			label = "WINDOW_TO_RIGHT_WORKSPACE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LS(LG(PG_DN))>,
+				<&macro_tap &tog 1>;
+		};
+
+		winlwork: win_to_left_work {
+			label = "WINDOW_TO_LEFT_WORKSPACE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp LS(LG(PG_UP))>,
+				<&macro_tap &tog 1>;
+		};
 	};
 
     combos {
@@ -239,26 +162,39 @@
 
 	keymap {
 		compatible = "zmk,keymap";
-			
+		
+		/*0*/
 		alpha_layer {
 			bindings = <
 				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp BSPC 
 				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
 				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
-									&tog 1  &lt 2 SPACE				&mo 3 &to 4 
+									&tog 1  &lt 3 SPACE				&mo 4 &tog 5 
 			>;
 		};	
 
+		/*1*/
        	num_layer {
 			bindings = <
-				&kp KP_MINUS   &n7tswap  &n8tswap  &n9tswap  &kp KP_PLUS				&trans  &trans  &trans  &trans  &trans
-				&astcaret      &n4tswap  &n5tswap  &n6tswap  &kp KP_EQUAL				&trans  &trans  &trans  &trans  &trans 
-				&kp KP_DIVIDE  &n1tswap  &n2tswap  &n3tswap  &dotprct					&trans  &trans  &trans  &trans  &trans 
-											&n0find  &mt LSHFT SPACE					&trans  &trans 
+				&kp KP_DIVIDE  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_ASTERISK				&trans  &trans  &trans  &trans  &trans
+				&kp KP_MINUS   &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS					&trans  &trans  &trans  &trans  &trans 
+				&kp PERCENT    &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT					&trans  &trans  &trans  &trans  &trans 
+													&kp KP_N0  &lt 2 SPACE					&trans  &trans 
 			>;
 		};
-		
-		right_layer {
+
+		/*2*/
+		num_layer2 {
+			bindings = <
+				&kp LPAR   &tswap7  &tswap8  &tswap9  &kp RPAR					&trans  &trans  &trans  &trans  &trans
+				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR				&trans  &trans  &trans  &trans  &trans 
+				&kp LT     &tswap1  &tswap2  &tswap3  &kp GT					&trans  &trans  &trans  &trans  &trans 
+										&kp KP_EQUAL  &trans					&trans  &trans 
+			>;
+		};
+
+		/*3*/
+		nav_layer {
 			bindings = <
 				&kp ESC   &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
 				&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
@@ -266,13 +202,14 @@
 												&kp ENTER &trans  				&kp SPC  &mo 2 
 			>;
 		};	
-		
-		tri_layer {
+
+		/*4*/
+		symbol_layer {
 			bindings = <
-				&kp NUM_1  &kp NUM_2    &kp NUM_3    &kp NUM_4    &kp NUM_5 			&trans &trans   &trans   &trans  &trans
-				&kp F1 &kp F2 &kp F3 &kp F4 &kp F5  						&trans &kp PG_UP  &kp K_VOL_UP &kp K_MUTE &trans 
-				&bt BT_CLR  &bt BT_NXT &bt BT_PRV &kp F6 &kp F7   				&trans &kp PG_DN  &kp K_VOL_DN  &trans &trans   
-							&trans &trans  					&trans &trans 
+				&trans  &trans  &trans  &trans  &trans				&trans  &trans     &trans   &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  			&trans  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &kp K_MUTE &trans 
+				&trans  &trans  &trans  &trans  &trans   			&trans  &kp PG_DN  &kp K_VOL_DN  &trans &trans   
+										&trans  &trans 				&trans  &trans 
 			>;
 		};	
 	};
