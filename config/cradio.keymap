@@ -176,7 +176,7 @@
 				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp BSPC 
 				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
 				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
-									&tog 1  &lt 3 SPACE				&mo 4 &tog 5 
+									&tog 1  &lt 3 SPACE				&mo 4 &mo 5 
 			>;
 		};	
 
@@ -205,7 +205,7 @@
 			bindings = <
 				&kp ESC   &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
 				&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
-				&kp LSFT  &kp KPLS &kp LBKT &kp RBKT   &kp BSLH    			&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
+				&kp LSFT  &kp KPLS &kp LBKT &kp TAB   &kp BSLH    			&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
 												&kp ENTER &trans  				&kp SPC  &mo 2 
 			>;
 		};	
@@ -213,11 +213,21 @@
 		/*4*/
 		symbol_layer {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&trans  &trans     &trans   &trans  &trans
-				&trans  &trans  &trans  &trans  &trans  			&trans  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &kp K_MUTE &trans 
-				&trans  &trans  &trans  &trans  &trans   			&trans  &kp PG_DN  &kp K_VOL_DN  &trans &trans   
+				&trans  &trans  &trans  &trans  &trans				&trans  &trans            &trans            &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  			&trans  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans  &trans 
+				&trans  &trans  &trans  &trans  &trans   			&trans  &ht_tp RBRC LBRC  &ht_tp GT LT      &trans  &trans   
 										&trans  &trans 				&trans  &trans 
 			>;
 		};	
+
+		/*5*/
+		blank_layer {
+			bindings = <
+				&trans  &trans  &trans  &trans  &trans				&trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  			&trans  &trans  &trans  &trans  &trans 
+				&trans  &trans  &trans  &trans  &trans   			&trans  &trans  &trans  &trans  &trans   
+										&trans  &trans 				&trans  &trans 
+			>;
+		};
 	};
 };
