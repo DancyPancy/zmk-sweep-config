@@ -222,7 +222,7 @@
 		rnav_layer {
 			bindings = <
 				&trans  &trans  &trans  &trans  &trans		&kp LS(LG(PG_UP))  &kp LC(LS(G))  &kp LC(F)  &kp LC(G)   &kp LS(LG(PG_DN))
-				&trans  &trans  &trans  &trans  &trans  	&kp RS(SGUI)       &kp LEFT       &kp UP     &kp RIGHT   &kp RCTRL 
+				&trans  &trans  &trans  &trans  &trans  	&kp RS(RGUI)       &kp LEFT       &kp UP     &kp RIGHT   &kp RCTRL 
 				&trans  &trans  &trans  &trans  &trans  	&sk RC(RALT)       &kp HOME       &kp DOWN   &kp END  &kp RSHIFT   
 										&trans  &trans 		&trans             &kp LC(BSPC) 
 			>;
