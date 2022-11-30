@@ -14,6 +14,7 @@
    tapping-term-ms = <200>;
 };
 
+
 / { 
     behaviors {
 		ht_tp: hold-tap-tap-preferred {
@@ -24,6 +25,22 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp>, <&kp>;
 		};
+
+        tsgui: tap_sticky_gui {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_STICKY_GUI";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LGUI>, <&sk LGUI>;
+        };
+
+    	cxp: copy_cut_paste {
+            compatible = "zmk,behavior-tap-dance";
+            label = "COPY_CUT_PASTE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ht_tp K_PASTE K_COPY>, <&kp K_CUT>;
+        };
     };
 
 	macros {
@@ -110,61 +127,39 @@
 				<&macro_tap &tog 1>;
         };
 
-		find: find {
-            label = "FIND";
+		highline: highlight_line {
+            label = "HIGHLIGHT_LINE";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = 
-				<&macro_tap &kp LC(F)>,
-				<&macro_tap &tog 1>;
+				<&macro_tap &kp END>,
+				<&macro_press &kp LSHIFT>,
+				<&macro_tap &kp HOME>;
         };
-
-		winrwork: win_to_right_work {
-			label = "WINDOW_TO_RIGHT_WORKSPACE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LS(LG(PG_DN))>,
-				<&macro_tap &tog 1>;
-		};
-
-		winlwork: win_to_left_work {
-			label = "WINDOW_TO_LEFT_WORKSPACE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LS(LG(PG_UP))>,
-				<&macro_tap &tog 1>;
-		};
 	};
 
     combos {
         compatible = "zmk,combos";
 	
 		base_layer {
-	    	timeout-ms = <10>;
+	    	timeout-ms = <50>;
             key-positions = <31 32>;
             bindings = <&to 0>;
 		};
 	
 		base_layer2 {
-	    	timeout-ms = <10>;
+	    	timeout-ms = <50>;
             key-positions = <33 34>;
             bindings = <&to 0>;
 		};
 
 		caps_lock {
-			timeout-ms = <25>;
+			timeout-ms = <75>;
 			key-positions = <21 30>;
 			layers = <0>;
 			bindings = <&kp CAPSLOCK>;
 		};
-	
-        combo_esc {
-            timeout-ms = <25>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
-        };
+
     };
 
 	keymap {
@@ -173,61 +168,62 @@
 		/*0*/
 		alpha_layer {
 			bindings = <
-				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp BSPC 
+				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp SEMI 
 				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
 				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
-									&tog 1  &lt 3 SPACE				&mo 4 &mo 5 
+									&lt 3 SPACE  &tog 1				&mo 4 &lt 5 BSPC 
 			>;
 		};	
 
 		/*1*/
        	num_layer {
 			bindings = <
-				&kp KP_DIVIDE  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_ASTERISK				&trans  &trans  &trans  &trans  &trans
-				&kp KP_MINUS   &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS					&trans  &trans  &trans  &trans  &trans 
-				&kp PERCENT    &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT					&trans  &trans  &trans  &trans  &trans 
-													&kp KP_N0  &lt 2 SPACE					&trans  &trans 
+				&kp KP_DIVIDE  &kp N7  &kp N8  &kp N9  &kp KP_ASTERISK				&trans  &trans  &trans  &trans  &trans
+				&kp KP_MINUS   &kp N4  &kp N5  &kp N6  &kp KP_PLUS					&trans  &trans  &trans  &trans  &trans 
+				&kp PERCENT    &kp N1  &kp N2  &kp N3  &kp DOT					    &trans  &trans  &trans  &trans  &trans 
+												&kp N0  &lt 2 SPACE					&trans  &trans 
 			>;
 		};
 
 		/*2*/
 		num_layer2 {
 			bindings = <
-				&kp LPAR   &tswap7  &tswap8  &tswap9  &kp RPAR					&trans  &trans  &trans  &trans  &trans
+				&kp LT     &tswap7  &tswap8  &tswap9  &kp GT					&trans  &trans  &trans  &trans  &trans
 				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR				&trans  &trans  &trans  &trans  &trans 
-				&kp LT     &tswap1  &tswap2  &tswap3  &kp GT					&trans  &trans  &trans  &trans  &trans 
+				&kp LPAR   &tswap1  &tswap2  &tswap3  &kp RPAR					&trans  &trans  &trans  &trans  &trans 
 										&kp KP_EQUAL  &trans					&trans  &trans 
 			>;
 		};
 
 		/*3*/
-		nav_layer {
+		mod_symbol_layer {
 			bindings = <
-				&kp ESC   &kp ATSN &kp HASH  &kp DLLR  &kp PRCT    			&kp CRRT  &kp AMPS &kp KMLT &kp LPRN &kp RPRN 
-				&kp HASH  &kp QMARK  &kp FSLH  &kp COLN  &kp SCLN 			&kp MINUS &kp KP_EQUAL  &kp LBRC  &kp RBRC   &kp BKSP
-				&kp LSFT  &kp KPLS &kp LBKT &kp TAB   &kp BSLH    			&kp UNDER &kp LEFT &kp DOWN &kp UP  &kp RIGHT
-												&kp ENTER &trans  				&kp SPC  &mo 2 
+				&kp ESC    &kp ATSN   &kp HASH   &kp DLLR  &kp PRCT				&trans  &trans  &trans  &trans  &trans 
+				&highline  &cxp       &kp ENTER  &tsgui    &kp SCLN				&trans  &trans  &trans  &trans  &trans
+				&sk LSFT   &sk LCTRL  &sk LGUI   &kp TAB   &kp BSLH				&trans  &trans  &trans  &trans  &trans
+												&trans  &kp DEL					&trans  &trans 
 			>;
 		};	
 
 		/*4*/
+		rnav_layer {
+			bindings = <
+				&trans  &trans  &trans  &trans  &trans		&kp LS(LG(PG_UP))  &kp LC(LS(G))  &kp LC(F)  &kp LC(G)   &kp LS(LG(PG_DN))
+				&trans  &trans  &trans  &trans  &trans  	&kp RS(SGUI)       &kp LEFT       &kp UP     &kp RIGHT   &kp RCTRL 
+				&trans  &trans  &trans  &trans  &trans  	&sk RC(RALT)       &kp HOME       &kp DOWN   &kp END  &kp RSHIFT   
+										&trans  &trans 		&trans             &kp LC(BSPC) 
+			>;
+		};
+
+		/*5*/
 		symbol_layer {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&trans  &trans            &trans            &trans  &trans
-				&trans  &trans  &trans  &trans  &trans  			&trans  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans  &trans 
-				&trans  &trans  &trans  &trans  &trans   			&trans  &ht_tp RBRC LBRC  &ht_tp GT LT      &trans  &trans   
+				&trans  &trans  &trans  &trans  &trans				&trans  &trans            &trans            &trans     &trans
+				&trans  &trans  &trans  &trans  &trans  			&ht_tp BSLH FSLH  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans     &trans 
+				&trans  &trans  &trans  &trans  &trans   			&trans  &ht_tp RBRC LBRC  &ht_tp GT LT      &kp EQUAL  &trans   
 										&trans  &trans 				&trans  &trans 
 			>;
 		};	
-
-		/*5*/
-		blank_layer {
-			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&trans  &trans  &trans  &trans  &trans
-				&trans  &trans  &trans  &trans  &trans  			&trans  &trans  &trans  &trans  &trans 
-				&trans  &trans  &trans  &trans  &trans   			&trans  &trans  &trans  &trans  &trans   
-										&trans  &trans 				&trans  &trans 
-			>;
-		};
+	
 	};
-};
+};  
