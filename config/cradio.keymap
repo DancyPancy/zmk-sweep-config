@@ -41,6 +41,30 @@
             tapping-term-ms = <200>;
             bindings = <&ht_tp K_PASTE K_COPY>, <&kp K_CUT>;
         };
+
+	  	eqlbase: equal_base {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EQUAL_TO_BASE_LAYER";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp KP_EQUAL>, <&to 0>;
+        };
+
+	  	pnp: play_next_previous {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PLAY_NEXT_PREVIOUS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
+        };	
+
+		exqu: exclamation_question {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EXCLAMATION_QUESTION_MARK";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp EXCLAMATION>, <&kp QUESTION>;
+        };	
     };
 
 	macros {
@@ -141,17 +165,6 @@
     combos {
         compatible = "zmk,combos";
 	
-		base_layer {
-	    	timeout-ms = <50>;
-            key-positions = <31 32>;
-            bindings = <&to 0>;
-		};
-	
-		base_layer2 {
-	    	timeout-ms = <50>;
-            key-positions = <33 34>;
-            bindings = <&to 0>;
-		};
 
 		caps_lock {
 			timeout-ms = <75>;
@@ -191,17 +204,17 @@
 				&kp LT     &tswap7  &tswap8  &tswap9  &kp GT					&trans  &trans  &trans  &trans  &trans
 				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR				&trans  &trans  &trans  &trans  &trans 
 				&kp LPAR   &tswap1  &tswap2  &tswap3  &kp RPAR					&trans  &trans  &trans  &trans  &trans 
-										&kp KP_EQUAL  &trans					&trans  &trans 
+											&eqlbase  &trans					&trans  &trans 
 			>;
 		};
 
 		/*3*/
 		mod_symbol_layer {
 			bindings = <
-				&kp ESC    &kp ATSN   &kp HASH   &kp DLLR  &kp PRCT				&trans  &trans  &trans  &trans  &trans 
-				&highline  &cxp       &kp ENTER  &tsgui    &kp SCLN				&trans  &trans  &trans  &trans  &trans
-				&sk LSFT   &sk LCTRL  &sk LGUI   &kp TAB   &kp BSLH				&trans  &trans  &trans  &trans  &trans
-												&trans  &kp DEL					&trans  &trans 
+				&kp ESC    &kp LC(LS(Z))  &kp LC(Z)  &pnp     &kp LC(L)				&trans  &trans  &trans  &trans  &trans 
+				&highline  &cxp           &kp ENTER  &tsgui   &kp SCLN				&trans  &trans  &trans  &trans  &trans
+				&sk LSFT   &sk LCTRL      &sk LGUI   &kp TAB  &kp BSLH				&trans  &trans  &trans  &trans  &trans
+													&trans  &kp DEL					&trans  &trans 
 			>;
 		};	
 
@@ -218,10 +231,10 @@
 		/*5*/
 		symbol_layer {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&trans  &trans            &trans            &trans     &trans
-				&trans  &trans  &trans  &trans  &trans  			&ht_tp BSLH FSLH  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans     &trans 
-				&trans  &trans  &trans  &trans  &trans   			&trans  &ht_tp RBRC LBRC  &ht_tp GT LT      &kp EQUAL  &trans   
-										&trans  &trans 				&trans  &trans 
+				&trans  &trans  &trans  &trans  &trans				&trans            &trans            &trans            &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  			&ht_tp BSLH FSLH  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans  &trans 
+				&trans  &trans  &trans  &trans  &trans   			&trans            &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu   &trans   
+										&trans  &trans 				&trans            &trans 
 			>;
 		};	
 	
