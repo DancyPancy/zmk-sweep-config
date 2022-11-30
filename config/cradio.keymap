@@ -10,12 +10,12 @@
 
 
 &mt {
-   flavor = "hold_preferred";
+   flavor = "hold-preferred";
    tapping-term-ms = <200>;
 };
 
 &lt {
-   flavor = "hold_preferred";
+   flavor = "hold-preferred";
    tapping-term-ms = <200>;
 };
 
@@ -254,10 +254,10 @@
 		/*2*/
 		num_layer2 {
 			bindings = <
-				&kp LT     &tswap7  &tswap8  &tswap9  &kp GT					&trans  &trans  &trans  &trans  &trans
-				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR				&trans  &trans  &trans  &trans  &trans 
-				&kp LPAR   &tswap1  &tswap2  &tswap3  &kp RPAR					&trans  &trans  &trans  &trans  &trans 
-											&eqlbase  &trans					&trans  &trans 
+				&to 0     &tswap7  &tswap8  &tswap9  &ht_tp GT LT					&trans  &trans  &trans  &trans  &trans
+				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR					&trans  &trans  &trans  &trans  &trans 
+				&kp LPAR   &tswap1  &tswap2  &tswap3  &kp RPAR						&trans  &trans  &trans  &trans  &trans 
+											&kp KP_EQUAL  &trans					&trans  &trans 
 			>;
 		};
 
