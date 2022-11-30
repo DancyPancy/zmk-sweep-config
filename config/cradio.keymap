@@ -10,10 +10,14 @@
 
 
 &mt {
-   flavor = "balanced";
+   flavor = "hold_preferred";
    tapping-term-ms = <200>;
 };
 
+&lt {
+   flavor = "hold_preferred";
+   tapping-term-ms = <200>;
+};
 
 / { 
     behaviors {
@@ -25,15 +29,15 @@
 			tapping-term-ms = <200>;
 			bindings = <&kp>, <&kp>;
 		};
-
-      skq: sticky_key_quick_release {
-        compatible = "zmk,behavior-sticky-key";
-        label = "STICKY_KEY_QUICK_RELEASE";
-        #binding-cells = <1>;
-        bindings = <&kp>;
-        release-after-ms = <1000>;
-        quick-release;
-      };
+		
+      	skq: sticky_key_quick_release {
+        	compatible = "zmk,behavior-sticky-key";
+        	label = "STICKY_KEY_QUICK_RELEASE";
+        	#binding-cells = <1>;
+        	bindings = <&kp>;
+        	release-after-ms = <1000>;
+        	quick-release;
+      	};
 
         tsgui: tap_sticky_gui {
             compatible = "zmk,behavior-tap-dance";
@@ -48,7 +52,7 @@
             label = "COPY_CUT_PASTE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&ht_tp K_PASTE K_COPY>, <&kp K_CUT>;
+            bindings = <&ht_tp K_CUT K_COPY>, <&kp K_PASTE>;
         };
 
 	  	eqlbase: equal_base {
@@ -91,6 +95,13 @@
             bindings = <&kp ASTERISK>, <&kp PERCENT>;
         };	
 
+		spclay: spaco {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ASTERISK_PERCENT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ASTERISK>, <&kp PERCENT>;
+        };	
 
 		dotplus: dot_plus {
 			compatible = "zmk,behavior-mod-morph";
