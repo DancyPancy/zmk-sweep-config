@@ -26,6 +26,15 @@
 			bindings = <&kp>, <&kp>;
 		};
 
+      skq: sticky_key_quick_release {
+        compatible = "zmk,behavior-sticky-key";
+        label = "STICKY_KEY_QUICK_RELEASE";
+        #binding-cells = <1>;
+        bindings = <&kp>;
+        release-after-ms = <1000>;
+        quick-release;
+      };
+
         tsgui: tap_sticky_gui {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_STICKY_GUI";
@@ -65,6 +74,39 @@
             tapping-term-ms = <200>;
             bindings = <&kp EXCLAMATION>, <&kp QUESTION>;
         };	
+
+		vsfocus: vscode_focus {
+            compatible = "zmk,behavior-tap-dance";
+            label = "VSCODE_FOCUS_SWAP";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LC(GRAVE)>, <&kp LC(N1)>;
+        };	
+
+		astperc: asterisk_percent {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ASTERISK_PERCENT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ASTERISK>, <&kp PERCENT>;
+        };	
+
+
+		dotplus: dot_plus {
+			compatible = "zmk,behavior-mod-morph";
+            label = "DOT_PLUS";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp PLUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
+
+		commin: comma_minus {
+			compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_MINUS";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp MINUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
     };
 
 	macros {
@@ -181,9 +223,9 @@
 		/*0*/
 		alpha_layer {
 			bindings = <
-				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U     &kp Y    &kp SEMI 
-				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E     &kp I    &kp O
-				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &kp CMMA  &kp DOT  &mt RSFT APOS
+				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U    &kp Y     &kp SEMI 
+				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E    &kp I     &kp O
+				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &commin  &dotplus  &mt RSFT APOS
 									&lt 3 SPACE  &tog 1				&mo 4 &lt 5 BSPC 
 			>;
 		};	
@@ -213,7 +255,7 @@
 			bindings = <
 				&kp ESC    &kp LC(LS(Z))  &kp LC(Z)  &pnp     &kp LC(L)				&trans  &trans  &trans  &trans  &trans 
 				&highline  &cxp           &kp ENTER  &tsgui   &kp SCLN				&trans  &trans  &trans  &trans  &trans
-				&sk LSFT   &sk LCTRL      &sk LGUI   &kp TAB  &kp BSLH				&trans  &trans  &trans  &trans  &trans
+				&sk LSFT   &sk LCTRL      &skq LALT  &kp TAB  &kp BSLH				&trans  &trans  &trans  &trans  &trans
 													&trans  &kp DEL					&trans  &trans 
 			>;
 		};	
@@ -231,10 +273,10 @@
 		/*5*/
 		symbol_layer {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&trans            &trans            &trans            &trans  &trans
-				&trans  &trans  &trans  &trans  &trans  			&ht_tp BSLH FSLH  &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &trans  &trans 
-				&trans  &trans  &trans  &trans  &trans   			&trans            &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu   &trans   
-										&trans  &trans 				&trans            &trans 
+				&trans  &trans  &trans  &trans  &trans				&kp GRAVE   &vsfocus          &kp HASH          &astperc          &kp AT
+				&trans  &trans  &trans  &trans  &trans  			&kp TILDE   &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &ht_tp BSLH FSLH  &kp UNDER
+				&trans  &trans  &trans  &trans  &trans   			&kp DOLLAR  &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu             &kp AMPS   
+										&trans  &trans 				&kp LC(LS(LA(LGUI)))          &trans 
 			>;
 		};	
 	
