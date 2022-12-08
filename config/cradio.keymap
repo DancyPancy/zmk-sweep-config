@@ -15,8 +15,9 @@
 };
 
 &lt {
-   flavor = "hold-preferred";
+   flavor = "tap-preferred";
    tapping-term-ms = <200>;
+   quick-tap-ms = <100>;
 };
 
 / { 
@@ -95,12 +96,12 @@
             bindings = <&kp ASTERISK>, <&kp PERCENT>;
         };	
 
-		spclay: spaco {
+		lnav_num: lnav_numpad_layer {
             compatible = "zmk,behavior-tap-dance";
-            label = "ASTERISK_PERCENT";
+            label = "LNAV_NUMPAD_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp ASTERISK>, <&kp PERCENT>;
+            bindings = <&mo 5>, <&tog 1>;
         };	
 
 		dotplus: dot_plus {
@@ -237,31 +238,41 @@
 				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U    &kp Y     &kp SEMI 
 				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E    &kp I     &kp O
 				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &commin  &dotplus  &mt RSFT APOS
-									&lt 3 SPACE  &tog 1				&mo 4 &lt 5 BSPC 
+									&lt 4 SPACE  &lnav_num				&mo 6 &lt 7 BSPC 
 			>;
-		};	
+		};
 
 		/*1*/
-       	num_layer {
+       	numpad1 {
 			bindings = <
 				&kp KP_DIVIDE  &kp N7  &kp N8  &kp N9  &kp KP_ASTERISK				&trans  &trans  &trans  &trans  &trans
 				&kp KP_MINUS   &kp N4  &kp N5  &kp N6  &kp KP_PLUS					&trans  &trans  &trans  &trans  &trans 
-				&kp PERCENT    &kp N1  &kp N2  &kp N3  &kp DOT					    &trans  &trans  &trans  &trans  &trans 
-												&kp N0  &lt 2 SPACE					&trans  &trans 
+				&kp N0         &kp N1  &kp N2  &kp N3  &kp DOT					    &trans  &trans  &trans  &trans  &trans 
+												&lt 2 SPACE  &lt 3 BSPC					&trans  &trans 
 			>;
 		};
 
 		/*2*/
-		num_layer2 {
+		numpad2 {
 			bindings = <
-				&to 0     &tswap7  &tswap8  &tswap9  &ht_tp GT LT					&trans  &trans  &trans  &trans  &trans
-				&kp CARET  &tswap4  &tswap5  &tswap6  &kp DOLLAR					&trans  &trans  &trans  &trans  &trans 
-				&kp LPAR   &tswap1  &tswap2  &tswap3  &kp RPAR						&trans  &trans  &trans  &trans  &trans 
-											&kp KP_EQUAL  &trans					&trans  &trans 
+				&kp DOLLAR  &tswap7  &tswap8  &tswap9  &kp CARET					&trans  &trans  &trans  &trans  &trans
+				&ht_tp LT LPAR  &tswap4  &tswap5  &tswap6  &ht_tp GT RPAR					&trans  &trans  &trans  &trans  &trans 
+				&trans   &tswap1  &tswap2  &tswap3  &to 0						&trans  &trans  &trans  &trans  &trans 
+											&trans  &trans					&trans  &trans 
 			>;
 		};
 
 		/*3*/
+		numpad3 {
+			bindings = <
+				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans 
+				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans 
+										&to 0  &trans					&trans  &trans 
+			>;
+		};
+
+		/*4*/
 		mod_symbol_layer {
 			bindings = <
 				&kp ESC    &kp LC(LS(Z))  &kp LC(Z)  &pnp     &kp LC(L)				&trans  &trans  &trans  &trans  &trans 
@@ -269,9 +280,19 @@
 				&sk LSFT   &sk LCTRL      &skq LALT  &kp TAB  &kp BSLH				&trans  &trans  &trans  &trans  &trans
 													&trans  &kp DEL					&trans  &trans 
 			>;
-		};	
+		};
 
-		/*4*/
+		/*5*/
+		lnav_layer {
+			bindings = <
+				&trans  &trans  &trans  &trans  &trans		&trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  	&trans  &trans  &trans  &trans  &trans 
+				&trans  &trans  &trans  &trans  &trans  	&trans  &trans  &trans  &trans  &trans   
+										&kp ENTER  &trans 		&trans  &trans 
+			>;
+		};
+
+		/*6*/
 		rnav_layer {
 			bindings = <
 				&trans  &trans  &trans  &trans  &trans		&kp LS(LG(PG_UP))  &kp LC(LS(G))  &kp LC(F)  &kp LC(G)   &kp LS(LG(PG_DN))
@@ -281,13 +302,14 @@
 			>;
 		};
 
-		/*5*/
+		/*7*/
 		symbol_layer {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&kp GRAVE   &vsfocus          &kp HASH          &astperc          &kp AT
+				&trans  &trans  &trans  &trans  &trans				&kp GRAVE   &kp AMPS          &kp HASH          &astperc          &kp AT
 				&trans  &trans  &trans  &trans  &trans  			&kp TILDE   &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &ht_tp BSLH FSLH  &kp UNDER
-				&trans  &trans  &trans  &trans  &trans   			&kp DOLLAR  &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu             &kp AMPS   
+				&trans  &trans  &trans  &trans  &trans   			&kp DOLLAR  &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu             &kp EQUAL   
 										&trans  &trans 				&kp LC(LS(LA(LGUI)))          &trans 
+																					
 			>;
 		};	
 	
