@@ -7,62 +7,70 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#define main 0 
+#define alpha2 1
+#define npad 2
+#define npad2 3
+#define rnav 4
+#define sys 5
+#define scut 6
 
+#define swaymenu LG(D)
+#define quitapp LG(LS(Q))
+#define fullscreen LG(F)
 
-&mt {
-   flavor = "hold-preferred";
-   tapping-term-ms = <200>;
-};
-
-&lt {
-   flavor = "tap-preferred";
-   tapping-term-ms = <200>;
-   quick-tap-ms = <100>;
-};
 
 / { 
     behaviors {
-		ht_tp: hold-tap-tap-preferred {
+
+		http: hold-tap-tap-preferred {
 			compatible = "zmk,behavior-hold-tap";
 			label = "HOLD_TAP_TAP_PREFERRED";
 			flavor = "tap-preferred";
 			#binding-cells = <2>;
-			tapping-term-ms = <200>;
+			tapping-term-ms = <100>;
 			bindings = <&kp>, <&kp>;
 		};
-		
-      	skq: sticky_key_quick_release {
-        	compatible = "zmk,behavior-sticky-key";
-        	label = "STICKY_KEY_QUICK_RELEASE";
-        	#binding-cells = <1>;
-        	bindings = <&kp>;
-        	release-after-ms = <1000>;
-        	quick-release;
-      	};
-
-        tsgui: tap_sticky_gui {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_STICKY_GUI";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LGUI>, <&sk LGUI>;
-        };
 
     	cxp: copy_cut_paste {
             compatible = "zmk,behavior-tap-dance";
             label = "COPY_CUT_PASTE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&ht_tp K_CUT K_COPY>, <&kp K_PASTE>;
+            bindings = <&http LC(X) LC(C)>, <&kp LC(V)>;
         };
 
-	  	eqlbase: equal_base {
-            compatible = "zmk,behavior-tap-dance";
-            label = "EQUAL_TO_BASE_LAYER";
+		cdel: ctrl_delete {
+	        compatible = "zmk,behavior-tap-dance";
+            label = "CTRL_DELETE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp KP_EQUAL>, <&to 0>;
+            bindings = <&kp DEL>, <&kp LC(DEL)>;	
+		};
+
+		mindiv: minus_div {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MINUS_PLUS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp MINUS>, <&kp FSLH>;
         };
+
+		addmul: add_multi {
+			compatible = "zmk,behavior-tap-dance";
+			label = "DIVIDE_MULTIPLY";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp PLUS>, <&kp ASTRK>;
+		};
+
+		quotes: quotations {
+			compatible = "zmk,behavior-tap-dance";
+			label = "QUOTATIONS";
+			#binding-cells = <0>;
+			tapping-term-ms = <200>;
+			bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
+		};
 
 	  	pnp: play_next_previous {
             compatible = "zmk,behavior-tap-dance";
@@ -72,138 +80,9 @@
             bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
         };	
 
-		exqu: exclamation_question {
-            compatible = "zmk,behavior-tap-dance";
-            label = "EXCLAMATION_QUESTION_MARK";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp EXCLAMATION>, <&kp QUESTION>;
-        };	
-
-		vsfocus: vscode_focus {
-            compatible = "zmk,behavior-tap-dance";
-            label = "VSCODE_FOCUS_SWAP";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LC(GRAVE)>, <&kp LC(N1)>;
-        };	
-
-		astperc: asterisk_percent {
-            compatible = "zmk,behavior-tap-dance";
-            label = "ASTERISK_PERCENT";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp ASTERISK>, <&kp PERCENT>;
-        };	
-
-		lnav_num: lnav_numpad_layer {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LNAV_NUMPAD_LAYER";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 5>, <&tog 1>;
-        };	
-
-		dotplus: dot_plus {
-			compatible = "zmk,behavior-mod-morph";
-            label = "DOT_PLUS";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp PLUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-		};
-
-		commin: comma_minus {
-			compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_MINUS";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp MINUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-		};
     };
 
 	macros {
-
-        tswap1: tab_swap_1 {
-            label = "TAB_SWAP_ONE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_1)>,
-				<&macro_tap &tog 1>
-                ;
-        };
-
-		tswap2: tab_swap_2 {
-            label = "TAB_SWAP_TWO";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_2)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap3: tab_swap_3 {
-            label = "TAB_SWAP_THREE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_3)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap4: tab_swap_4 {
-            label = "TAB_SWAP_FOUR";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_4)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap5: tab_swap_5 {
-            label = "TAB_SWAP_FIVE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_5)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap6: tab_swap_6 {
-            label = "TAB_SWAP_SIX";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_6)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap7: tab_swap_7 {
-            label = "TAB_SWAP_SEVEN";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_7)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap8: tab_swap_8 {
-            label = "TAB_SWAP_EIGHT";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_8)>,
-				<&macro_tap &tog 1>;
-        };
-
-		tswap9: tab_swap_9 {
-            label = "TAB_SWAP_NINE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &kp LA(NUMBER_9)>,
-				<&macro_tap &tog 1>;
-        };
 
 		highline: highlight_line {
             label = "HIGHLIGHT_LINE";
@@ -214,104 +93,213 @@
 				<&macro_press &kp LSHIFT>,
 				<&macro_tap &kp HOME>;
         };
+
+		salpha2: sticky_alpha2 {
+			label = "STICKY_ALPHA2";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+            bindings = 
+				<&macro_tap &sl alpha2>;
+		};
+
+		ctrlnav: ctrl_nav_layer {
+            label = "CTRL_NAV_LAYER";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+				<&macro_press &mo rnav &kp RCTRL>,
+				<&macro_pause_for_release>,
+				<&macro_release &mo rnav &kp RCTRL>;
+        };
 	};
 
     combos {
         compatible = "zmk,combos";
-	
 
-		caps_lock {
-			timeout-ms = <75>;
-			key-positions = <21 30>;
-			layers = <0>;
-			bindings = <&kp CAPSLOCK>;
+		bkspc {
+			timeout-ms = <50>;
+			key-positions = <17 18>;
+			layers = <main>;
+			bindings = <&kp BACKSPACE>;
+		};
+
+		numbkspc {
+			timeout-ms = <50>;
+			key-positions = <22 23>;
+			layers = <npad>;
+			bindings = <&kp BACKSPACE>;
+		};
+
+		ctrlbkspc {
+			timeout-ms = <50>;
+			key-positions = <16 17 18>;
+			layers = <main>;
+			bindings = <&kp RC(BACKSPACE)>;
 		};
 
     };
 
 	keymap {
 		compatible = "zmk,keymap";
-		
+		//   ╭────────────────────╮ ╭────────────────────╮
+        //   │  0   1   2   3   4 │ │  5   6   7   8   9 │
+        //   │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
+        //   │ 20  21  22  23  24 | | 25  26  27  28  29 │
+        //   ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
+        //               ╰────────╯ ╰────────╯     
+
 		/*0*/
-		alpha_layer {
+		main {
 			bindings = <
-				&kp Q       &kp W  &kp F  &kp P  &kp B				&kp J &kp L  &kp U    &kp Y     &kp SEMI 
-				&kp A       &kp R  &kp S  &kp T  &kp G				&kp M &kp N  &kp E    &kp I     &kp O
-				&mt LSFT Z  &kp X  &kp C  &kp D  &kp V				&kp K &kp H  &commin  &dotplus  &mt RSFT APOS
-									&lt 4 SPACE  &lnav_num				&mo 6 &lt 7 BSPC 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&kp L			&kp G			&kp D			&none				&none			&kp H			&kp U			&kp O			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&mt LSHFT I		&kp S			&kp R			&kp T			&none				&none			&kp N			&kp E			&kp A			&mt RSHFT C
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  ||			  |	   |			  ||			  |													*/
+																&lt scut SPACE	&mo npad			&mo rnav		&salpha2
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*1*/
-       	numpad1 {
+		alpha2 {
 			bindings = <
-				&kp KP_DIVIDE  &kp N7  &kp N8  &kp N9  &kp KP_ASTERISK				&trans  &trans  &trans  &trans  &trans
-				&kp KP_MINUS   &kp N4  &kp N5  &kp N6  &kp KP_PLUS					&trans  &trans  &trans  &trans  &trans 
-				&kp N0         &kp N1  &kp N2  &kp N3  &kp DOT					    &trans  &trans  &trans  &trans  &trans 
-												&lt 2 SPACE  &lt 3 BSPC					&trans  &trans 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none 
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&kp V			&kp W			&kp M			&none				&none			&kp F			&quotes			&kp Y			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&mt LSHFT Q		&kp J			&kp P			&kp K			&none				&none			&kp B			&kp	DOT			&kp X			&mt RSHFT Z 
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  ||			  |	   |			  || layer		  |													*/
+																&kp LSHFT		&trans				&trans			&trans
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*2*/
-		numpad2 {
+		npad {
 			bindings = <
-				&kp DOLLAR  &tswap7  &tswap8  &tswap9  &kp CARET					&trans  &trans  &trans  &trans  &trans
-				&ht_tp LT LPAR  &tswap4  &tswap5  &tswap6  &ht_tp GT RPAR					&trans  &trans  &trans  &trans  &trans 
-				&trans   &tswap1  &tswap2  &tswap3  &to 0						&trans  &trans  &trans  &trans  &trans 
-											&trans  &trans					&trans  &trans 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&kp N4			&kp N5			&kp N6			&none				&none			&trans			&trans			&trans			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&lt npad2 N0	&mt LGUI N1		&kp N2			&kp N3			&none				&none			&trans			&trans			&trans			&trans
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  || layer	 	  |	   |			  ||			  |													*/
+																&kp ENTER		&kp TAB				&trans			&trans
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*3*/
-		numpad3 {
+		npad2 {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans
-				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans 
-				&trans  &trans  &trans  &trans  &trans					&trans  &trans  &trans  &trans  &trans 
-										&to 0  &trans					&trans  &trans 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none 
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&mindiv			&addmul			&kp BSPC		&none				&none			&trans			&trans			&trans			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* | layer		  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&trans			&kp N7			&kp N8			&kp N9			&none				&none			&trans			&trans			&trans			&trans
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  ||			  |	   |			  ||			  |													*/
+																&trans			&to npad			&trans			&trans
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*4*/
-		mod_symbol_layer {
+		rnav {
 			bindings = <
-				&kp ESC    &kp LC(LS(Z))  &kp LC(Z)  &pnp     &kp LC(L)				&trans  &trans  &trans  &trans  &trans 
-				&highline  &cxp           &kp ENTER  &tsgui   &kp SCLN				&trans  &trans  &trans  &trans  &trans
-				&sk LSFT   &sk LCTRL      &skq LALT  &kp TAB  &kp BSLH				&trans  &trans  &trans  &trans  &trans
-													&trans  &kp DEL					&trans  &trans 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none 
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&trans			&trans			&trans			&none				&none			&kp LEFT		&kp UP			&kp RIGHT		&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&trans			&trans			&trans			&trans			&none				&none			&kp HOME		&kp DOWN		&kp END			&ctrlnav
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  ||			  |	   | layer		  ||			  |													*/
+																&trans			&trans				&kp RSHIFT		&kp RC(BSPC) 
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*5*/
-		lnav_layer {
+		sys {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans		&trans  &trans  &trans  &trans  &trans
-				&trans  &trans  &trans  &trans  &trans  	&trans  &trans  &trans  &trans  &trans 
-				&trans  &trans  &trans  &trans  &trans  	&trans  &trans  &trans  &trans  &trans   
-										&kp ENTER  &trans 		&trans  &trans 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&kp LG(N1)		&kp LG(N2)		&kp LG(N3)		&none				&none			&trans			&trans			&trans			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* | layer		  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&trans			&kp LG(D)		&kp LG(LS(Q))	&trans			&none				&none			&trans			&trans			&trans			&trans
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   |			  ||			  |	   |			  ||			  |													*/
+																&trans			&trans				&trans			&trans
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
 
 		/*6*/
-		rnav_layer {
+		scut {
 			bindings = <
-				&trans  &trans  &trans  &trans  &trans		&kp LS(LG(PG_UP))  &kp LC(LS(G))  &kp LC(F)  &kp LC(G)   &kp LS(LG(PG_DN))
-				&trans  &trans  &trans  &trans  &trans  	&kp RS(RGUI)       &kp LEFT       &kp UP     &kp RIGHT   &kp RCTRL 
-				&trans  &trans  &trans  &trans  &trans  	&sk RC(RALT)       &kp HOME       &kp DOWN   &kp END  &kp RSHIFT   
-										&trans  &trans 		&trans             &kp LC(BSPC) 
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&none			&kp fullscreen	&pnp			&kp swaymenu	&none				&none			&trans			&trans			&trans			&none
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+				&mo sys			&cxp			&kp LC(S)		&kp TAB			&none				&none			&trans			&trans			&trans			&trans
+			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
+			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
+			/* 												   | layer		  ||			  |	   |			  ||			  |													*/
+																&trans			&trans				&trans			&trans
+			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
-
-		/*7*/
-		symbol_layer {
-			bindings = <
-				&trans  &trans  &trans  &trans  &trans				&kp GRAVE   &kp AMPS          &kp HASH          &astperc          &kp AT
-				&trans  &trans  &trans  &trans  &trans  			&kp TILDE   &ht_tp RPAR LPAR  &ht_tp RBKT LBKT  &ht_tp BSLH FSLH  &kp UNDER
-				&trans  &trans  &trans  &trans  &trans   			&kp DOLLAR  &ht_tp RBRC LBRC  &ht_tp GT LT      &exqu             &kp EQUAL   
-										&trans  &trans 				&kp LC(LS(LA(LGUI)))          &trans 
-																					
-			>;
-		};	
-	
 	};
 };  
