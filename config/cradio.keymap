@@ -159,14 +159,6 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-		underhash: underscore_hash {
-            compatible = "zmk,behavior-mod-morph";
-            label = "UNDERSCORE_HASH";
-            #binding-cells = <0>;
-            bindings = <&kp UNDERSCORE>, <&kp HASH>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
 		dotcmma: dot_comma {
             compatible = "zmk,behavior-mod-morph";
             label = "DOT_COMMA";
