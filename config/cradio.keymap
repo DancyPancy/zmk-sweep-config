@@ -15,14 +15,14 @@
 #define sys 5
 #define scut 6
 
-#define swaymenu LG(D)
+#define swaymenu LG(S)
 #define quitapp LG(LS(Q))
 #define fullscreen LG(F)
 
 
 / { 
     behaviors {
-
+		// behaviors
 		http: hold-tap-tap-preferred {
 			compatible = "zmk,behavior-hold-tap";
 			label = "HOLD_TAP_TAP_PREFERRED";
@@ -32,6 +32,7 @@
 			bindings = <&kp>, <&kp>;
 		};
 
+		// Tap Dances
     	cxp: copy_cut_paste {
             compatible = "zmk,behavior-tap-dance";
             label = "COPY_CUT_PASTE";
@@ -39,14 +40,6 @@
             tapping-term-ms = <200>;
             bindings = <&http LC(X) LC(C)>, <&kp LC(V)>;
         };
-
-		cdel: ctrl_delete {
-	        compatible = "zmk,behavior-tap-dance";
-            label = "CTRL_DELETE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp DEL>, <&kp LC(DEL)>;	
-		};
 
 		mindiv: minus_div {
             compatible = "zmk,behavior-tap-dance";
@@ -64,14 +57,6 @@
 			bindings = <&kp PLUS>, <&kp ASTRK>;
 		};
 
-		quotes: quotations {
-			compatible = "zmk,behavior-tap-dance";
-			label = "QUOTATIONS";
-			#binding-cells = <0>;
-			tapping-term-ms = <200>;
-			bindings = <&kp SINGLE_QUOTE>, <&kp DOUBLE_QUOTES>;
-		};
-
 	  	pnp: play_next_previous {
             compatible = "zmk,behavior-tap-dance";
             label = "PLAY_NEXT_PREVIOUS";
@@ -79,6 +64,135 @@
             tapping-term-ms = <200>;
             bindings = <&kp C_PP>, <&kp C_NEXT>, <&kp C_PREV>;
         };	
+
+		// Mod Morphs
+		lrpar: left_right_parentheses {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEFT_RIGHT_PARENTHESES";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		lrbkt: left_right_brackets {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEFT_RIGHT_BRACKETS";
+            #binding-cells = <0>;
+            bindings = <&kp LBKT>, <&kp RBKT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		lrbrc: left_right_braces {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEFT_RIGHT_BRACES";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC>, <&kp RBRC>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		ltgt: less_than_greater_than {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LESS_THAN_GREATER_THAN";
+            #binding-cells = <0>;
+            bindings = <&kp LT>, <&kp GT;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		bangqmark: bang_questionmark {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BANG_QUESTIONMARK";
+            #binding-cells = <0>;
+            bindings = <&kp EXCL>, <&kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		eqprct: equal_percent {
+            compatible = "zmk,behavior-mod-morph";
+            label = "EQUAL_PERCENT";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp PERCENT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		minplus: minus_plus {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MINUS_PLUS";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp PLUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		
+		underhash: underscore_hash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDERSCORE_HASH";
+            #binding-cells = <0>;
+            bindings = <&kp UNDERSCORE>, <&kp HASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		colonat: colon_atsign {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COLON_ATSIGN";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp AT_SIGN>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		semicamp: semicolon_ampersand {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SEMICOLON_AMPERSAND";
+            #binding-cells = <0>;
+            bindings = <&kp SEMICOLON>, <&kp AMPERSAND>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		fslhast: fslash_asterisk {
+            compatible = "zmk,behavior-mod-morph";
+            label = "FSLASH_ASTERISK";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp ASTERISK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		bslhdllr: bslash_dollar {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BSLASH_DOLLAR";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH>, <&kp DOLLAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		underhash: underscore_hash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDERSCORE_HASH";
+            #binding-cells = <0>;
+            bindings = <&kp UNDERSCORE>, <&kp HASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		dotcmma: dot_comma {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_COMMA";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COMMA>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		pipecaret: pipe_caret {
+            compatible = "zmk,behavior-mod-morph";
+            label = "PIPE_CARET";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE>, <&kp CARET>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+		tildegrave: tilde_grave {
+            compatible = "zmk,behavior-mod-morph";
+            label = "TILDE_GRAVE";
+            #binding-cells = <0>;
+            bindings = <&kp UNDERSCORE>, <&kp HASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
 
     };
 
@@ -116,6 +230,13 @@
     combos {
         compatible = "zmk,combos";
 
+		escp {
+			timeout-ms = <50>;
+			key-positions = <11 12>;
+			layers = <main>;
+			bindings = <&kp ESCAPE>;
+		};
+		
 		bkspc {
 			timeout-ms = <50>;
 			key-positions = <17 18>;
@@ -179,11 +300,11 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&none			&kp V			&kp W			&kp M			&none				&none			&kp F			&quotes			&kp Y			&none
+				&none			&kp V			&kp W			&kp M			&none				&none			&kp F			&kp APOS		&kp Y			&none
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&mt LSHFT Q		&kp J			&kp P			&kp K			&none				&none			&kp B			&kp	DOT			&kp X			&mt RSHFT Z 
+				&mt LSHFT Q		&kp J			&kp P			&kp K			&none				&none			&kp B			&dotcmma		&kp X			&mt RSHFT Z 
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  ||			  |	   |			  || layer		  |													*/
@@ -201,11 +322,11 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&none			&kp N4			&kp N5			&kp N6			&none				&none			&trans			&trans			&trans			&none
+				&none			&kp N4			&kp N5			&kp N6			&none				&none			&lrpar			&lrbkt			&trans			&none
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&lt npad2 N0	&mt LGUI N1		&kp N2			&kp N3			&none				&none			&trans			&trans			&trans			&trans
+				&lt npad2 N0	&mt LGUI N1		&kp N2			&kp N3			&none				&none			&lrbrc			&ltgt			&bangqmark		&eqprct
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  || layer	 	  |	   |			  ||			  |													*/
@@ -245,15 +366,15 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&none			&trans			&trans			&trans			&none				&none			&kp LEFT		&kp UP			&kp RIGHT		&none
+				&none			&underhash		&bslhdllr		&fslhast		&none				&none			&kp LEFT		&kp UP			&kp RIGHT		&none
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&trans			&trans			&trans			&trans			&none				&none			&kp HOME		&kp DOWN		&kp END			&ctrlnav
+				&pipecaret		&colonat		&semicamp		&minplus		&none				&none			&kp HOME		&kp DOWN		&kp END			&ctrlnav
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  ||			  |	   | layer		  ||			  |													*/
-																&trans			&trans				&kp RSHIFT		&kp RC(BSPC) 
+																&kp CAPSLOCK	&trans				&kp RSHIFT		&kp RC(BSPC) 
 			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
@@ -267,11 +388,11 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&none			&kp LG(N1)		&kp LG(N2)		&kp LG(N3)		&none				&none			&trans			&trans			&trans			&none
+				&none			&trans			&trans			&trans			&none				&none			&trans			&trans			&trans			&none
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* | layer		  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&trans			&kp LG(D)		&kp LG(LS(Q))	&trans			&none				&none			&trans			&trans			&trans			&trans
+				&trans			&trans			&trans			&kp DEL			&none				&none			&trans			&trans			&trans			&trans
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  ||			  |	   |			  ||			  |													*/
@@ -289,11 +410,11 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&none			&kp fullscreen	&pnp			&kp swaymenu	&none				&none			&trans			&trans			&trans			&none
+				&none			&cxp			&pnp			&kp swaymenu	&none				&none			&trans			&trans			&trans			&none
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
-				&mo sys			&cxp			&kp LC(S)		&kp TAB			&none				&none			&trans			&trans			&trans			&trans
+				&mo sys			&sk LCTRL		&sk ALT			&kp TAB			&none				&none			&trans			&trans			&trans			&trans
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   | layer		  ||			  |	   |			  ||			  |													*/
