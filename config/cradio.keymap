@@ -39,7 +39,6 @@
 			release-after-ms = <1500>;
 			ignore-modifiers;
 		};
-		};
 
 		// Tap Dances
     	cxp: copy_cut_paste {
