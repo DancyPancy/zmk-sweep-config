@@ -2,6 +2,8 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+ *
+ * Edited by DancyPancy
  */
 
 #include <behaviors.dtsi>
@@ -27,6 +29,16 @@
 			#binding-cells = <2>;
 			tapping-term-ms = <100>;
 			bindings = <&kp>, <&kp>;
+		};
+
+		slnq: sticky_layer_no_quick_release {
+			compatible = "zmk,behavior-sticky-key";
+			label = "STICKY_KEY_QUICK_RELEASE";
+			#binding-cells = <1>;
+			bindings = <&mo>;
+			release-after-ms = <1500>;
+			ignore-modifiers;
+		};
 		};
 
 		// Tap Dances
@@ -202,7 +214,7 @@
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
             bindings = 
-				<&macro_tap &sl alpha2>;
+				<&macro_tap &slnq alpha2>;
 		};
 
 		ctrlnav: ctrl_nav_layer {
@@ -359,7 +371,7 @@
 		rnav {
 			bindings = <
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
-			/* |			  || rs ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+			/* |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
 				&none			&none			&none			&none			&none				&none			&none			&none			&none			&none 
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
