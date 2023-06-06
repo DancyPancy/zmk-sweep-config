@@ -44,7 +44,7 @@
 		r_key_lt: repeat_key_layertap {
 			compatible = "zmk,behavior-hold-tap";
 			label = "REPEAT_KEY_LAYERTAP";
-			#binding-cells = <2>;
+			#binding-cells = <1>;
 			flavor = "hold-preferred";
 			tapping-term-ms = <200>;
 			bindings = <&mo>, <&key_repeat>;
