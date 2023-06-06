@@ -41,10 +41,10 @@
 			quick-release;
 		};
 
-		r_key_lt: repeat_key_layertap {
+		reklt: repeat_key_layertap {
 			compatible = "zmk,behavior-hold-tap";
 			label = "REPEAT_KEY_LAYERTAP";
-			#binding-cells = <1>;
+			#binding-cells = <2>;
 			flavor = "hold-preferred";
 			tapping-term-ms = <200>;
 			bindings = <&mo>, <&key_repeat>;
@@ -305,7 +305,7 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  ||			  |	   |			  ||			  |													*/
-																&lt scut SPACE	&r_key_lt npad		&mo rnav		&salpha2
+																&lt scut SPACE	&reklt npad NULL	&mo rnav		&salpha2
 			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
