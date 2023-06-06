@@ -38,6 +38,7 @@
 			bindings = <&mo>;
 			release-after-ms = <1500>;
 			ignore-modifiers;
+			quick-release;
 		};
 
 		// Tap Dances
