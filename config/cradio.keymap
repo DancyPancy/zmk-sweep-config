@@ -236,14 +236,6 @@
 				<&macro_release &mo rnav &kp RCTRL>;
         };
 
-		typespc: typing_backspace {
-            label = "TYPING_BACKSPACE";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = 
-				<&macro_tap &to main>,
-				<&macro_tap &kp BACKSPACE>;
-        };
 	};
 
     combos {
@@ -259,14 +251,6 @@
 		bkspc {
 			timeout-ms = <25>;
 			key-positions = <17 18>;
-			layers = <main alpha2>;
-			bindings = <&kp BACKSPACE>;
-		};
-
-		numbkspc {
-			timeout-ms = <50>;
-			key-positions = <22 23>;
-			layers = <npad>;
 			bindings = <&kp BACKSPACE>;
 		};
 
@@ -305,7 +289,7 @@
 			/* ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 			/* 												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 			/* 												   |			  ||			  |	   |			  ||			  |													*/
-																&lt scut SPACE	&reklt npad N0		&mo rnav		&salpha2
+																&lt scut SPACE	&reklt npad N0 		&mo rnav		&salpha2
 			/* 												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
