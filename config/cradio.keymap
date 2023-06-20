@@ -17,7 +17,9 @@
 #define sys 5
 #define scut 6
 
-
+&mt {
+	flavor = "balanced";
+}
 
 / { 
     behaviors {
