@@ -200,7 +200,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "TILDE_GRAVE";
             #binding-cells = <0>;
-            bindings = <&kp UNDERSCORE>, <&kp HASH>;
+            bindings = <&kp TILDE>, <&kp GRAVE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
