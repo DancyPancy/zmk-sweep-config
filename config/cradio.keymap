@@ -79,11 +79,11 @@
         };	
 
 		// Mod Morphs
-		lrpar: left_right_parentheses {
+		dotcmma: dot_comma {
             compatible = "zmk,behavior-mod-morph";
-            label = "LEFT_RIGHT_PARENTHESES";
+            label = "DOT_COMMA";
             #binding-cells = <0>;
-            bindings = <&kp LPAR>, <&kp RPAR>;
+            bindings = <&kp DOT>, <&kp COMMA>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
