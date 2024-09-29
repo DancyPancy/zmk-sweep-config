@@ -107,7 +107,7 @@
             label = "BLUETOOTH_SCROLL";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&bt BT_NXT>, <&bt BT_PRV>, <&bt BT_CLR>;
+            bindings = <&bt BT_SEL 0>, <&bt BT_SEL 1>, <&bt BT_SEL 3>, <&bt BT_CLR>;
         };			
 
 		// Mod Morphs
