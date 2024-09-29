@@ -21,6 +21,7 @@
 #define num 3
 #define sys 4
 #define sym1 5
+#define sym2 6
 
 &mt {
 	flavor = "tap-preferred";
