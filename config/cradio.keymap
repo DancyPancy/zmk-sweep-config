@@ -19,7 +19,7 @@
 #define alpha2 1
 #define nav 2
 #define num 3
-#define system 4
+#define syst 4
 #define sym1 5
 #define sym2 6
 
@@ -39,13 +39,13 @@
 			bindings = <&kp>, <&kp>;
 		};
 
-		lttp: layer-tap-tap-preferred {
+		ltspc: layer-tap-spacebar {
 			compatible = "zmk,behavior-hold-tap";
-			label = "LAYER_TAP_TAP_PREFERRED";
+			label = "LAYER_TAP_SPACEBAR";
 			flavor = "tap-preferred";
 			#binding-cells = <2>;
 			tapping-term-ms = <200>;
-			bindings = <&mo>, <&kp>;
+			bindings = <&mo>, <&spcbar>;
 		};
 
 		slnq: sticky_layer_no_quick_release {
@@ -148,6 +148,14 @@
             bindings = 
 				<&macro_tap &sl sym1>;
 		};
+
+		spcbar: spacebar {
+			label = "SPACEBAR";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+            bindings = 
+				<&macro_tap &kp SPACE>;
+		};
 	};
 
     combos {
@@ -208,7 +216,7 @@
 		/*	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 		/*	   												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 		/*	   												   |			  ||      (repeat)|	   |		(sym1)||	  (alpha2)|													*/
-		/**/													&lttp 4 SPACE	&reklt sym2 N0 		&mhsym1 num N0	&mha2 nav N0
+		/**/													&lt syst SPACE	&reklt sym2 N0 		&mhsym1 num N0	&mha2 nav N0
 		/*	   												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
@@ -280,10 +288,11 @@
 		};
 
 		/*4*/
-		system { 
+		syst { 
 			bindings = <
 		/*	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 		/*	   |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
+		/**/	&none			&none			&none			&none			&none				&none			&none			&none			&none			&none
 		/*	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 		/*	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮╭──────────────╮ */
 		/*	   |			  ||			  ||			  ||			  ||			  |	   |			  ||			  ||			  ||			  ||			  | */
