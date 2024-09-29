@@ -146,7 +146,6 @@
 		esc {
 			timeout-ms = <50>;
 			key-positions = <11 12>;
-			layers = <alpha1>;
 			bindings = <&kp ESCAPE>;
 			layers = <alpha alpha2>;
 		};
