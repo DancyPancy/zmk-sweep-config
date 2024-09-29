@@ -39,6 +39,15 @@
 			bindings = <&kp>, <&kp>;
 		};
 
+		lttp: hold-tap-tap-preferred {
+			compatible = "zmk,behavior-hold-tap";
+			label = "HOLD_TAP_TAP_PREFERRED";
+			flavor = "tap-preferred";
+			#binding-cells = <2>;
+			tapping-term-ms = <200>;
+			bindings = <&mo>, <&kp>;
+		};
+
 		slnq: sticky_layer_no_quick_release {
 			compatible = "zmk,behavior-sticky-key";
 			label = "STICKY_KEY_QUICK_RELEASE";
@@ -199,7 +208,7 @@
 		/*	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯╰──────────────╯ */
 		/*	   												   ╭──────────────╮╭──────────────╮	   ╭──────────────╮╭──────────────╮
 		/*	   												   |			  ||      (repeat)|	   |		(sym1)||	  (alpha2)|													*/
-		/**/													&lt sys SPACE	&reklt sym2 N0 		&mhsym1 num N0	&mha2 nav N0
+		/**/													&lttp sys SPACE	&reklt sym2 N0 		&mhsym1 num N0	&mha2 nav N0
 		/*	   												   ╰──────────────╯╰──────────────╯	   ╰──────────────╯╰──────────────╯													*/
 			>;
 		};
