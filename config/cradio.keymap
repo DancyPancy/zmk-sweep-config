@@ -43,7 +43,7 @@
 		ltspc: layer-tap-spacebar {
 			compatible = "zmk,behavior-hold-tap";
 			label = "LAYER_TAP_SPACEBAR";
-			flavor = "tap-preferred";
+			flavor = "balanced";
 			#binding-cells = <2>;
 			tapping-term-ms = <200>;
 			bindings = <&mo>, <&spcbar>;
@@ -73,7 +73,7 @@
 			label = "MOMENTARY_HOLD_ALPHA2_TAP";
 			#binding-cells = <2>;
 			flavor = "tap-preferred";
-			tapping-term-ms = <150>;
+			tapping-term-ms = <200>;
 			bindings = <&mo>, <&salpha2>;
 		};
 
@@ -138,6 +138,7 @@
 			label = "STICKY_ALPHA2";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
+			wait-ms = <5>;
             bindings = 
 				<&macro_tap &slqr alpha2>;
 		};
